@@ -88,7 +88,31 @@ export default function Home() {
         </div>
 
       </section>
+{/* WECHAT CONTACT */}
+<section style={{
+  padding: "80px 20px",
+  textAlign: "center",
+  backgroundColor: "#ffffff",
+  color: "#000"
+}}>
+  <h2 style={{ fontSize: "28px", marginBottom: "20px" }}>
+    Contact via WeChat
+  </h2>
 
+  <p style={{ marginBottom: "15px", fontSize: "18px" }}>
+    WeChat ID: <strong>captaincaveyachts</strong>
+  </p>
+
+  <img
+    src="/wechat-qr.jpg"
+    alt="WeChat QR"
+    style={{
+      width: "180px",
+      borderRadius: "16px",
+      boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
+    }}
+  />
+</section>
       {/* FOOTER */}
       <footer style={{
         padding: "40px",
