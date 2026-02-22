@@ -1,9 +1,15 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
   const [lang, setLang] = useState<'en' | 'ru'>('en')
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    setVisible(true)
+  }, [])
+
   const isRU = lang === 'ru'
 
   return (
@@ -26,7 +32,7 @@ export default function Home() {
 
       {/* HERO */}
       <section style={{
-        height: "80vh",
+        height: "90vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
@@ -35,70 +41,52 @@ export default function Home() {
         background: "linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') center/cover"
       }}>
 
-        {isRU ? (
-          <>
-            <h1 style={{ fontSize: "48px", marginBottom: 20 }}>
-              Роскошная аренда яхты в Фетхие
-            </h1>
-            <p style={{ fontSize: "20px", maxWidth: "600px", marginBottom: 30 }}>
-              Частные морские туры по бирюзовым бухтам Фетхие.
-              Премиальный отдых и незабываемые впечатления.
-            </p>
-          </>
-        ) : (
-          <>
-            <h1 style={{ fontSize: "48px", marginBottom: 20 }}>
-              Luxury Private Speed Boat Charter in Fethiye
-            </h1>
-            <p style={{ fontSize: "20px", maxWidth: "600px", marginBottom: 30 }}>
-              Discover hidden turquoise bays with exclusive private yacht
-              experiences along the Mediterranean coast.
-            </p>
-          </>
-        )}
-
-        <button style={{
-          padding: "15px 35px",
-          fontSize: "18px",
-          backgroundColor: "#d4af37",
-          border: "none",
-          cursor: "pointer",
-          fontWeight: "bold"
-        }}>
-          {isRU ? "Забронировать сейчас" : "Book Now"}
-        </button>
-
-      </section>
-
-      {/* PACKAGES */}
-      <section style={{ padding: "80px 40px", textAlign: "center" }}>
-        <h2 style={{ marginBottom: 50 }}>
-          {isRU ? "Пакеты туров" : "Private Tour Packages"}
-        </h2>
-
         <div style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "30px",
-          flexWrap: "wrap"
+          opacity: visible ? 1 : 0,
+          transform: visible ? "translateY(0)" : "translateY(40px)",
+          transition: "all 1s ease"
         }}>
 
-          <div style={{ background: "#1a1a1a", padding: "30px", width: "280px" }}>
-            <h3>2 Hours</h3>
-            <p>€250</p>
-          </div>
+          {isRU ? (
+            <>
+              <h1 style={{ fontSize: "52px", marginBottom: 20 }}>
+                Роскошная аренда яхты в Фетхие
+              </h1>
+              <p style={{ fontSize: "20px", maxWidth: "600px", marginBottom: 40 }}>
+                Частные морские туры по бирюзовым бухтам Фетхие.
+                Премиальный отдых и незабываемые впечатления.
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 style={{ fontSize: "52px", marginBottom: 20 }}>
+                Luxury Private Speed Boat Charter in Fethiye
+              </h1>
+              <p style={{ fontSize: "20px", maxWidth: "600px", marginBottom: 40 }}>
+                Discover hidden turquoise bays with exclusive private yacht
+                experiences along the Mediterranean coast.
+              </p>
+            </>
+          )}
 
-          <div style={{ background: "#1a1a1a", padding: "30px", width: "280px" }}>
-            <h3>4 Hours</h3>
-            <p>€450</p>
-          </div>
-
-          <div style={{ background: "#1a1a1a", padding: "30px", width: "280px" }}>
-            <h3>Full Day</h3>
-            <p>€750</p>
-          </div>
+          <a
+            href="https://wa.me/905324725802"
+            target="_blank"
+            style={{
+              padding: "15px 40px",
+              fontSize: "18px",
+              backgroundColor: "#d4af37",
+              color: "black",
+              textDecoration: "none",
+              fontWeight: "bold",
+              transition: "0.3s"
+            }}
+          >
+            {isRU ? "Забронировать через WhatsApp" : "Book via WhatsApp"}
+          </a>
 
         </div>
+
       </section>
 
       {/* FOOTER */}
